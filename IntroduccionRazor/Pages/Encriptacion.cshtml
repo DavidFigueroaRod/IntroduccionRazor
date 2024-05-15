@@ -1,0 +1,25 @@
+﻿@page
+@model IntroduccionRazor.Pages.EncriptacionModel
+@{
+    ViewData["Title"] = "Codificador/Decodificador de Mensajes de Julio César";
+}
+
+<h3>Ingrese un mensaje para codificar o decodificar:</h3>
+
+<form method="post">
+    <p>Texto: <input type="text" asp-for="Texto" /></p>
+    <p>Seleccione la acción:
+        <select asp-for="Accion">
+            <option value="Codificar">Codificar</option>
+            <option value="Decodificar">Decodificar</option>
+        </select>
+    </p>
+    <p>Número de posiciones para rotar: <input type="number" asp-for="N" /></p>
+    <p><input type="submit" value="Aplicar" /></p>
+
+    @if (!string.IsNullOrEmpty(Model.TextoResultado))
+    {
+        <h3>Resultado:</h3>
+        <p>@Model.TextoResultado</p>
+    }
+</form>

@@ -1,0 +1,44 @@
+﻿@page
+@model IntroduccionRazor.Pages.CiclosModel
+
+<h3>Ciclo While</h3>
+@{
+    var contadorWhile = 1;
+    while (contadorWhile < 10)
+    {
+        <p>@contadorWhile</p>
+        contadorWhile += 1;
+    }
+}
+<br />
+
+<h3>Ciclo Do-While</h3>
+@{
+    var contadorDoWhile = 1;
+    do
+    {
+        <p>@contadorDoWhile</p>
+        contadorDoWhile += 1;
+    }
+    while (contadorDoWhile < 10);
+}
+<br />
+
+<h3>Ciclo For</h3>
+@{
+    for (var i = 0; i < 21; i++)
+    {
+        <p>@i</p>
+    }
+}
+<br />
+
+<h3>Ciclo For-Each</h3>
+@{
+    <ul>
+        @foreach (var header in HttpContext.Request.Headers)
+        {
+            <li>@header</li>
+        }
+    </ul>
+}

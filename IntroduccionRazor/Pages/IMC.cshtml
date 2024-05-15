@@ -1,0 +1,69 @@
+﻿@page
+@model IntroduccionRazor.Pages.IMCModel
+@{
+}
+
+<h3>Calculadora de Índice de Masa Corporal</h3>
+
+<form method="post">
+    <p>Ingresa tu peso en kilogramos: <input type="number" asp-for="peso" step="any" /></p>
+    <p>Ingresa tu altura en metros: <input type="number" asp-for="altura" step="any" /></p>
+    <p><input type="submit" value="Calcular" /></p>
+
+    @switch (Model.resultado)
+    {
+        case 0:
+            <div>
+                <strong>Aún no se calcula tu IMC</strong>
+            </div>
+            break;
+
+        case double resultado when resultado <= 18:
+            <div>
+                <strong>Tu IMC es bajo: @Model.resultado</strong>
+                <img src="~/img/pesoBajo.jpeg" style="width:200px; height:200px" />
+            </div>
+            break;
+
+        case double resultado when resultado >= 18 && resultado < 25:
+            <div>
+                <strong>Tu IMC es normal: @Model.resultado</strong>
+                <img src="~/img/pesoNormal.jpg" style="width:200px; height:200px" />
+            </div>
+            break;
+
+        case double resultado when resultado >= 25 && resultado < 27:
+            <div>
+                <strong>Tienes sobre peso y tu IMC es: @Model.resultado</strong>
+                <img src="~/img/sobrePeso.jpeg" style="width:200px; height:200px" />
+            </div>
+            break;
+
+        case double resultado when resultado >= 27 && resultado < 30:
+            <div>
+                <strong>Tienes Obesidad Grado I y tu IMC es: @Model.resultado</strong>
+                <img src="~/img/obesidad-tipo-1.jpg" style="width:200px; height:200px" />
+            </div>
+            break;
+
+        case double resultado when resultado >= 30 && resultado < 40:
+            <div>
+                <strong>Tienes Obesidad Grado II y tu IMC es: @Model.resultado</strong>
+                <img src="~/img/obesidad-tipo-2.jpg" style="width:200px; height:200px" />
+            </div>
+            break;
+
+        case double resultado when resultado >= 40:
+            <div>
+                <strong>Tienes Obesidad Grado III y tu IMC es: @Model.resultado</strong>
+                <img src="~/img/obesidad-tipo-3.jpg" style="width:200px; height:200px" />
+            </div>
+            break;
+
+        default:
+            <div>
+                <strong>Error: Valor de IMC no válido</strong>
+            </div>
+            break;
+    }
+</form>

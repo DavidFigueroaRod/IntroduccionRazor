@@ -1,0 +1,21 @@
+﻿@page
+@model IntroduccionRazor.Pages.ArreglosMediaModel
+@{
+    ViewData["Title"] = "Estadísticas de Números Aleatorios";
+}
+
+<h3>Números Aleatorios Generados:</h3>
+
+<p>
+    @foreach (var numero in Model.Numeros)
+    {
+        <span>@numero</span>
+    }
+</p>
+
+<h3>Resultados:</h3>
+
+<p>Suma de los números: @Model.Suma</p>
+<p>Promedio de los números: @Model.Promedio</p>
+<p>Moda: @Model.Moda</p>
+<p>Mediana: @Model.Mediana</p>

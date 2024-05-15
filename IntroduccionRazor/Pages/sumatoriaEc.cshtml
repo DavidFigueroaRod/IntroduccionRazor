@@ -1,0 +1,43 @@
+﻿@page
+@model IntroduccionRazor.Pages.sumatoriaEcModel
+@{
+}
+
+
+<div class="d-flex justify-content-sm-center" ><h3>Calculadora de igualdad</h3></div>
+<div class="d-flex justify-content-center">
+
+
+
+
+<form method="post">
+    <p>Ingresa el valor de a: <input type="number" asp-for="A" step="any" /></p>
+    <p>Ingresa el valor de x: <input type="number" asp-for="X" step="any" /></p>
+    <p>Ingresa el valor de b: <input type="number" asp-for="B" step="any" /></p>
+    <p>Ingresa el valor de y: <input type="number" asp-for="Y" step="any" /></p>
+    <p>Ingresa el valor de n: <input type="number" asp-for="N" step="any" /></p>
+    <p><input type="submit" value="Calcular" /></p>
+
+    @if (@Model.resultadoSencillo != 0)
+    {
+        <h5>El valor de (ax+by)<sup>n</sup> es: @Model.resultadoSencillo</h5>
+    }
+
+    @if (@Model.ListaResultadosK.Count > 0)
+    {
+        <h5>Iteraciones de k:</h5>
+        <ul>
+            @foreach (var resultadoK in Model.ListaResultadosK)
+            {
+                <li>@resultadoK</li>
+            }
+        </ul>
+    }
+
+    @if (@Model.ResultadoLargo != 0)
+    {
+        <h5>El valor por Binomio de Newton es: @Model.ResultadoLargo</h5>
+    }
+
+</form>
+</div>
